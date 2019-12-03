@@ -1,0 +1,125 @@
+<section class="script">
+  <div class="container">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-hd">Track</h3>
+      </div>
+      <form #form="ngForm">
+        <div class="panel-body" id="panel-list">
+          <div class="row col-md-12">
+            <div class="col-md-2">
+              <button type="button" class="btn btn-primary btn-asset" (click)="onBack()">Back
+              </button>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="container left">
+              <div class="content">
+                <h4>Manufacturer</h4>
+                <br>
+                <p>
+                  <span>Asset# :{{manufactureObj.AssetID}} </span>
+                </p>
+                <p>
+                  <span>Asset Name : {{manufactureObj.AssetName}}</span>
+                </p>
+                <p>
+                  <span>Owner : {{manufactureObj.Owner}}</span>
+                </p>
+                <p>
+                  <span>TimeStamp :{{manufactureObj.MfgDateTime}}</span>
+                </p>
+                <p>
+                  <span>Location : Hyderabad</span>
+                </p>
+                <p>
+                  <span>Temperature : 24 C</span>
+                </p>
+              </div>
+            </div>
+            <div class="container right">
+              <div class="content">
+                <h4>Distributor</h4>
+                <br>
+                <p>
+                  <span>Asset# :{{manufactureObj.AssetID}} </span>
+                </p>
+                <p>
+                  <span>Asset Name :{{manufactureObj.AssetName}} </span>
+                </p>
+                <p>
+                  <span>Owner : PQR</span>
+                </p>
+                <p>
+                  <span *ngIf="distrubatorObj && distrubatorObj.MfgDateTime!= undefined">TimeStamp
+                    :{{distrubatorObj.MfgDateTime}}</span>
+                  <span *ngIf="!distrubatorObj ">TimeStamp : -</span>
+                </p>
+                <p>
+                  <span>Location : Hyderabad</span>
+                </p>
+                <p>
+                  <span>Temperature : 24 C</span>
+                </p>
+              </div>
+            </div>
+            <div class="container left">
+              <div class="content">
+                <h4>Wholesaler</h4>
+                <br>
+                <p>
+                  <span>Asset# :{{manufactureObj.AssetID}} </span>
+                </p>
+                <p>
+                  <span>Asset Name : {{manufactureObj.AssetName}}</span>
+                </p>
+                <p>
+                  <span>Owner :BCD </span>
+                </p>
+                <p>
+                  <span *ngIf="wholesalerObj && wholesalerObj.MfgDateTime!= undefined">TimeStamp
+                    :{{wholesalerObj.MfgDateTime}}</span>
+                  <span *ngIf="!wholesalerObj ">TimeStamp : -</span>
+                </p>
+                <p>
+                  <span>Location : Hyderabad</span>
+                </p>
+                <p>
+                  <span>Temperature : 24 C</span>
+                </p>
+              </div>
+            </div>
+            <div class="container right">
+              <div class="content">
+                <h4>Retailer</h4>
+                <br>
+                <p>
+                  <span>Asset# :{{manufactureObj.AssetID}} </span>
+                </p>
+                <p>
+                  <span>Asset Name : {{manufactureObj.AssetName}}</span>
+                </p>
+                <p>
+                  <span>Owner :ABC </span>
+                </p>
+                <p>
+                  <span *ngIf="retailerObj && retailerObj.MfgDateTime!= undefined">TimeStamp
+                    :{{retailerObj.MfgDateTime}}</span>
+                  <span *ngIf="!retailerObj">TimeStamp : -</span>
+                </p>
+                <p>
+                  <span>Location : Hyderabad</span>
+                </p>
+                <p>
+                  <span>Temperature : 24 C</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- </div> -->
+</section>
