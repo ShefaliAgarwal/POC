@@ -8,7 +8,7 @@
             <input #myInput type="file" name="file" id="file" accept=".csv"
               (change)="handleFileInput($event.target.files)" />
           </div>
-          <button type="button" class="btn btn-primary btn-asset  mb-5" (click)="onUploadFile(uploadFile)">Upload
+          <button type="button" class="btn btn-primary btn-asset  mb-5" (click)="onUploadFile()">Upload
             File</button>
         </div>
         <div *ngIf="isManufacturer">
