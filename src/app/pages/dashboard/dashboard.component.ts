@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 // valuePrepareFunction: (date) => {
                 //     var raw = new Date(date);
                 //     if (raw) {
-                //         return this.datePipe.transform(raw, 'dd/MM/yyyy HH:MM:SS MS');
+                //         return this.datePipe.transform(raw, 'dd/MM/yyyy HH:mm:ss.SSS');
                 //     }
                 // }
             }
@@ -162,7 +162,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.manfuacturerData = this.test;
             if (this.manfuacturerData.length) {
                 this.manfuacturerData.forEach(ele => {
-                    ele['MfgDateTime'] = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:MM:SS MS');
+                    ele['MfgDateTime'] = this.datePipe.transform(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss.SSS');
                     ele['QRID'] = ele.AssetID + ele.AssetName.substring(0, 4) + ele.BOXID.substring(0, 6) + ele.ConsignmentID.substring(0, 6)
                 })
             }
@@ -180,7 +180,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 this.distrubatorData = this.test;
                 if (this.distrubatorData.length) {
                     this.distrubatorData.forEach(ele => {
-                        ele['MfgDateTime'] = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:MM:SS MS');
+                        ele['MfgDateTime'] = this.datePipe.transform(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss.SSS');
                         ele['QRID'] = ele.AssetID + ele.AssetName.substring(0, 4) + ele.BOXID.substring(0, 6) + ele.ConsignmentID.substring(0, 6)
                     })
                 }
@@ -193,7 +193,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 this.wholesalerData = this.test;
                 if (this.wholesalerData.length) {
                     this.wholesalerData.forEach(ele => {
-                        ele['MfgDateTime'] = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:MM:SS MS');
+                        ele['MfgDateTime'] = this.datePipe.transform(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss.SSS');
                         ele['QRID'] = ele.AssetID + ele.AssetName.substring(0, 4) + ele.BOXID.substring(0, 6) + ele.ConsignmentID.substring(0, 6)
                     })
                 }
@@ -206,7 +206,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 this.retailerData = this.test;
                 if (this.retailerData.length) {
                     this.retailerData.forEach(ele => {
-                        ele['MfgDateTime'] = this.datePipe.transform(new Date(), 'dd/MM/yyyy HH:MM:SS MS');
+                        ele['MfgDateTime'] = this.datePipe.transform(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss.SSS');
                         ele['QRID'] = ele.AssetID + ele.AssetName.substring(0, 4) + ele.BOXID.substring(0, 6) + ele.ConsignmentID.substring(0, 6)
                     })
                 }
