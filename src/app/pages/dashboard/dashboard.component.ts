@@ -89,34 +89,62 @@ export class DashboardComponent implements OnInit, OnDestroy {
     constructor(private router: Router, private datePipe: DatePipe, private toasterService: ToastrService,
         private dashboardService: DashboardService
     ) {
-        this.dashboardService.manufacturerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
-            if (data != null && data.length) {
-                this.isManufacturer = true;
-                this.manfuacturerData = data;
-                this.manufacturersource.load(data);
-            }
-        });
-        this.dashboardService.distrubutorData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
-            if (data != null && data.length) {
-                this.isDistributor = true;
-                this.distrubatorData = data;
-                this.distrubatorsource.load(data);
-            }
-        })
-        this.dashboardService.wholeSalerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
-            if (data != null && data.length) {
-                this.isWholesaler = true;
-                this.wholesalerData = data;
-                this.wholesalersource.load(data);
-            }
-        })
-        this.dashboardService.retailerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
-            if (data != null && data.length) {
-                this.isRetailer = true;
-                this.retailerData = data;
-                this.retailersource.load(data);
-            }
-        })
+        this.manfuacturerData = JSON.parse(localStorage.getItem('Manufacture'));
+        if (this.manfuacturerData) {
+            this.isManufacturer = true;
+            this.manufacturersource.load(this.manfuacturerData);
+        }
+        console.log('observable manufacutre dashboard', this.manfuacturerData);
+        this.distrubatorData = JSON.parse(localStorage.getItem('Distributor'));
+        if (this.distrubatorData) {
+            this.isDistributor = true;
+            this.distrubatorsource.load(this.distrubatorData);
+        }
+
+        this.wholesalerData = JSON.parse(localStorage.getItem('Wholesaler'));
+        if (this.wholesalerData) {
+            this.isWholesaler = true;
+            this.wholesalersource.load(this.wholesalerData);
+        }
+
+        this.retailerData = JSON.parse(localStorage.getItem('Retailer'));
+        if (this.retailerData) {
+            this.isRetailer = true;
+            this.retailersource.load(this.retailerData);
+        }
+
+        // this.dashboardService.manufacturerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
+        //     if (data != null && data.length) {
+        //         this.isManufacturer = true;
+        //         this.manfuacturerData = data;
+        //         console.log('observable manufacutre dashboard', this.manfuacturerData);
+        //         this.manufacturersource.load(data);
+        //     }
+        // });
+        // this.dashboardService.distrubutorData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
+        //     if (data != null && data.length) {
+        //         this.isDistributor = true;
+        //         this.distrubatorData = data;
+        //         console.log('observable distrubatorData dashboard', this.distrubatorData);
+        //         this.distrubatorsource.load(data);
+        //     }
+        // })
+        // this.dashboardService.wholeSalerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
+        //     if (data != null && data.length) {
+        //         this.isWholesaler = true;
+        //         this.wholesalerData = data;
+        //         console.log('observable wholesalerData dashboard', this.wholesalerData);
+        //         this.wholesalersource.load(data);
+        //     }
+        // })
+        // this.dashboardService.retailerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
+        //     if (data != null && data.length) {
+        //         this.isRetailer = true;
+        //         this.retailerData = data;
+        //         console.log('observable retailerData dashboard', this.retailerData);
+        //         this.retailersource.load(data);
+        //     }
+        // })
         this.dashboardService.csvData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
             if (data != null && data.length) {
                 this.test = data;
@@ -165,9 +193,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
                     ele['MfgDateTime'] = this.datePipe.transform(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss.SSS');
                     ele['QRID'] = ele.AssetID + ele.AssetName.substring(0, 4) + ele.BOXID.substring(0, 6) + ele.ConsignmentID.substring(0, 6)
                 })
+                setTimeout(ele => {
+                    localStorage.setItem('Manufacture', JSON.stringify(this.manfuacturerData));
+                    // this.dashboardService.manufacturerData.next(this.manfuacturerData);
+                    this.manufacturersource.load(this.manfuacturerData);
+                }, 400);
             }
-            this.dashboardService.manufacturerData.next(this.manfuacturerData);
-            this.manufacturersource.load(this.manfuacturerData);
+
         } else {
             this.toasterService.error('Select File to Upload!!');
         }
@@ -183,9 +215,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
                         ele['MfgDateTime'] = this.datePipe.transform(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss.SSS');
                         ele['QRID'] = ele.AssetID + ele.AssetName.substring(0, 4) + ele.BOXID.substring(0, 6) + ele.ConsignmentID.substring(0, 6)
                     })
+                    setTimeout(ele => {
+                        localStorage.setItem('Distributor', JSON.stringify(this.distrubatorData));
+                        // this.dashboardService.distrubutorData.next(this.distrubatorData);
+                        this.distrubatorsource.load(this.distrubatorData);
+                    }, 400);
                 }
-                this.dashboardService.distrubutorData.next(this.distrubatorData);
-                this.distrubatorsource.load(this.distrubatorData);
+
                 break;
             }
             case 'Distributor': {
@@ -196,9 +232,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
                         ele['MfgDateTime'] = this.datePipe.transform(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss.SSS');
                         ele['QRID'] = ele.AssetID + ele.AssetName.substring(0, 4) + ele.BOXID.substring(0, 6) + ele.ConsignmentID.substring(0, 6)
                     })
+                    setTimeout(ele => {
+                        localStorage.setItem('Wholesaler', JSON.stringify(this.wholesalerData));
+                        // this.dashboardService.wholeSalerData.next(this.wholesalerData);
+                        this.wholesalersource.load(this.wholesalerData);
+                    }, 400);
                 }
-                this.dashboardService.wholeSalerData.next(this.wholesalerData);
-                this.wholesalersource.load(this.wholesalerData);
+
                 break;
             }
             case 'Wholesaler': {
@@ -209,9 +249,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
                         ele['MfgDateTime'] = this.datePipe.transform(new Date(Date.now()), 'dd/MM/yyyy HH:mm:ss.SSS');
                         ele['QRID'] = ele.AssetID + ele.AssetName.substring(0, 4) + ele.BOXID.substring(0, 6) + ele.ConsignmentID.substring(0, 6)
                     })
+                    setTimeout(ele => {
+                        localStorage.setItem('Retailer', JSON.stringify(this.retailerData));
+                        // this.dashboardService.retailerData.next(this.retailerData);
+                        this.retailersource.load(this.retailerData);
+                    }, 400);
                 }
-                this.dashboardService.retailerData.next(this.retailerData);
-                this.retailersource.load(this.retailerData);
+
                 break;
             }
         }

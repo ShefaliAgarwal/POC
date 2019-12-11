@@ -22,26 +22,34 @@ export class ScanComponent implements OnInit, OnDestroy {
 
   id: any;
   constructor(private router: Router, private dashBoardService: DashboardService, private route: ActivatedRoute) {
-    this.dashBoardService.manufacturerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
-      if (data != null) {
-        this.manufacturerData = data;
-      }
-    })
-    this.dashBoardService.distrubutorData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
-      if (data != null && data.length) {
-        this.distrubatorData = data;
-      }
-    })
-    this.dashBoardService.wholeSalerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
-      if (data != null && data.length) {
-        this.wholesalerData = data;
-      }
-    })
-    this.dashBoardService.retailerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
-      if (data != null && data.length) {
-        this.retailerData = data;
-      }
-    })
+    this.manufacturerData = JSON.parse(localStorage.getItem('Manufacture'));
+    this.distrubatorData = JSON.parse(localStorage.getItem('Distributor'));
+    this.wholesalerData = JSON.parse(localStorage.getItem('Wholesaler'));
+    this.retailerData = JSON.parse(localStorage.getItem('Retailer'));
+    // this.dashBoardService.manufacturerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
+    //   if (data != null) {
+    //     this.manufacturerData = data;
+    //     console.log('observable manufacutre scan', this.manufacturerData);
+    //   }
+    // })
+    // this.dashBoardService.distrubutorData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
+    //   if (data != null && data.length) {
+    //     this.distrubatorData = data;
+    //     console.log('observable distrubatorData scan', this.distrubatorData);
+    //   }
+    // })
+    // this.dashBoardService.wholeSalerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
+    //   if (data != null && data.length) {
+    //     this.wholesalerData = data;
+    //     console.log('observable manufacutre scan', this.wholesalerData);
+    //   }
+    // })
+    // this.dashBoardService.retailerData.pipe(takeUntil(this.unsubscribeAll)).subscribe(data => {
+    //   if (data != null && data.length) {
+    //     this.retailerData = data;
+    //     console.log('observable manufacutre scan', this.retailerData);
+    //   }
+    // })
   }
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get("id");
