@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -57,28 +57,28 @@ export class ScanComponent implements OnInit, OnDestroy {
     this.getObj()
   }
   getObj() {
-    if (this.manufacturerData.length) {
+    if (this.manufacturerData && this.manufacturerData.length) {
       this.manufacturerData.forEach(ele => {
         if (ele.QRID == this.id) {
           this.manufactureObj = ele;
         }
       })
     }
-    if (this.distrubatorData.length) {
+    if (this.distrubatorData && this.distrubatorData.length) {
       this.distrubatorData.forEach(ele => {
         if (ele.QRID == this.id) {
           this.distrubatorObj = ele;
         }
       })
     }
-    if (this.wholesalerData.length) {
+    if (this.wholesalerData && this.wholesalerData.length) {
       this.wholesalerData.forEach(ele => {
         if (ele.QRID == this.id) {
           this.wholesalerObj = ele;
         }
       })
     }
-    if (this.retailerData.length) {
+    if (this.retailerData && this.retailerData.length) {
       this.retailerData.forEach(ele => {
         if (ele.QRID == this.id) {
           this.retailerObj = ele;

@@ -19,16 +19,16 @@
                 <h4>Manufacturer</h4>
                 <br>
                 <p>
-                  <span>Asset# :{{manufactureObj.AssetID}} </span>
+                  <span>Asset# :{{manufactureObj?.AssetID}} </span>
                 </p>
                 <p>
-                  <span>Asset Name : {{manufactureObj.AssetName}}</span>
+                  <span>Asset Name : {{manufactureObj?.AssetName}}</span>
                 </p>
                 <p>
-                  <span>Owner : {{manufactureObj.Owner}}</span>
+                  <span>Owner : {{manufactureObj?.Owner}}</span>
                 </p>
                 <p>
-                  <span>TimeStamp :{{manufactureObj.MfgDateTime}}</span>
+                  <span>TimeStamp :{{manufactureObj?.MfgDateTime}}</span>
                 </p>
                 <p>
                   <span>Location : Hyderabad</span>
@@ -43,17 +43,17 @@
                 <h4>Distributor</h4>
                 <br>
                 <p>
-                  <span>Asset# :{{manufactureObj.AssetID}} </span>
+                  <span>Asset# :{{manufactureObj?.AssetID}} </span>
                 </p>
                 <p>
-                  <span>Asset Name :{{manufactureObj.AssetName}} </span>
+                  <span>Asset Name :{{manufactureObj?.AssetName}} </span>
                 </p>
                 <p>
                   <span>Owner : PQR</span>
                 </p>
                 <p>
                   <span *ngIf="distrubatorObj && distrubatorObj.MfgDateTime!= undefined">TimeStamp
-                    :{{distrubatorObj.MfgDateTime}}</span>
+                    :{{distrubatorObj?.MfgDateTime}}</span>
                   <span *ngIf="!distrubatorObj ">TimeStamp : -</span>
                 </p>
                 <p>
@@ -69,17 +69,17 @@
                 <h4>Wholesaler</h4>
                 <br>
                 <p>
-                  <span>Asset# :{{manufactureObj.AssetID}} </span>
+                  <span>Asset# :{{manufactureObj?.AssetID}} </span>
                 </p>
                 <p>
-                  <span>Asset Name : {{manufactureObj.AssetName}}</span>
+                  <span>Asset Name : {{manufactureObj?.AssetName}}</span>
                 </p>
                 <p>
                   <span>Owner :BCD </span>
                 </p>
                 <p>
                   <span *ngIf="wholesalerObj && wholesalerObj.MfgDateTime!= undefined">TimeStamp
-                    :{{wholesalerObj.MfgDateTime}}</span>
+                    :{{wholesalerObj?.MfgDateTime}}</span>
                   <span *ngIf="!wholesalerObj ">TimeStamp : -</span>
                 </p>
                 <p>
@@ -95,17 +95,17 @@
                 <h4>Retailer</h4>
                 <br>
                 <p>
-                  <span>Asset# :{{manufactureObj.AssetID}} </span>
+                  <span>Asset# :{{manufactureObj?.AssetID}} </span>
                 </p>
                 <p>
-                  <span>Asset Name : {{manufactureObj.AssetName}}</span>
+                  <span>Asset Name : {{manufactureObj?.AssetName}}</span>
                 </p>
                 <p>
                   <span>Owner :ABC </span>
                 </p>
                 <p>
                   <span *ngIf="retailerObj && retailerObj.MfgDateTime!= undefined">TimeStamp
-                    :{{retailerObj.MfgDateTime}}</span>
+                    :{{retailerObj?.MfgDateTime}}</span>
                   <span *ngIf="!retailerObj">TimeStamp : -</span>
                 </p>
                 <p>
